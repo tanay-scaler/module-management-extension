@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Scaler Module Automator <small>v1.2.0</small></title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Scaler Module Automator <small>v1.2.0</small></h1>
+    <p class="muted">Upload the Sheet1 CSV, then run the batches sequentially on the open Scaler page.</p>
+
+    <label class="file-label">
+      <span>CSV input</span>
+      <input id="csvFile" type="file" accept=".csv,text/csv">
+    </label>
+
+    <div class="actions">
+      <button id="loadCsv">Load CSV</button>
+      <button id="startRun" class="primary">Run all</button>
+      <button id="processNext">Run next</button>
+      <button id="pauseRun">Pause</button>
+      <button id="resumeRun">Resume</button>
+      <button id="stopRun" class="danger">Stop</button>
+      <button id="resetState">Reset state</button>
+    </div>
+
+    <section class="card">
+      <h2>Status</h2>
+      <div id="status">Idle</div>
+      <div id="summary" class="summary"></div>
+    </section>
+
+    <section class="card">
+      <h2>Rows</h2>
+      <div id="rowsPreview" class="preview"></div>
+    </section>
+
+    <section class="card">
+      <h2>Log</h2>
+      <pre id="log"></pre>
+    </section>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

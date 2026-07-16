@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Scaler Module Batch Automator",
+  "version": "1.2.0",
+  "description": "Internal automation tool for sequential batch module deletion and insertion from CSV on Scaler SCM.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://www.scaler.com/scm/module-management/batch*"
+  ],
+  "action": {
+    "default_title": "Scaler Module Automator",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.scaler.com/scm/module-management/batch*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
