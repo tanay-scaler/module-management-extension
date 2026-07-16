@@ -26,7 +26,6 @@ The **Scaler Module Batch Automator** removes the manual effort of editing modul
 |---|---|
 | MV3 Manifest | Chrome Manifest V3 service-worker |
 | Host restriction | `https://www.scaler.com/scm/module-management/batch*` |
-| Permissions | `storage`, `activeTab`, `scripting` |
 | Version | 1.2.0 |
 
 ---
@@ -149,17 +148,6 @@ Batch_name,Action,Module to add 1,Mod to delete 1,Placement,Prev_module,Module_t
 
 ---
 
-## Safe Rollout Checklist
-
-- [ ] Test with **one known batch** using **Run next** first.
-- [ ] Confirm the batch is found correctly in search.
-- [ ] Confirm module deletion targets the right entry.
-- [ ] Confirm module insertion lands in the correct position with correct toggles.
-- [ ] Only then proceed with **Run all** for the full CSV.
-- [ ] Keep the SCM tab visible during the first full run for visual QA.
-- [ ] If selectors break after a SCM UI update, inspect the live DOM and update `content.js` accordingly.
-
----
 
 ## Architecture
 
@@ -186,17 +174,5 @@ scaler-module-extension/
 
 ---
 
-## Troubleshooting
-
-| Symptom | Likely cause | Fix |
-|---|---|---|
-| "Open the Scaler page first" | No active SCM tab | Navigate to the SCM batch URL before using the popup |
-| Batch not found | Name mismatch | Check exact spelling / spaces in `Batch_name` column |
-| Module not found for deletion | Selector drift after UI update | Inspect live DOM and update selectors in `content.js` |
-| Run stops after one error | Unexpected content.js failure | Check the Log panel; re-run failed rows individually |
-| CSV preview shows 0 rows | Missing `Batch_name` column or wrong delimiter | Ensure file is comma-separated with correct header |
-| Extension becomes unresponsive | Service worker restarted | Click **Reset state**, reload the SCM tab, then re-run |
-
----
 
 *Internal tool — Scaler Academy engineering workflows.*
